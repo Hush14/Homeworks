@@ -1,21 +1,16 @@
-def fact(n):
-    fac = 1
-    i = 0
-    while i < n:
-        i += 1
-        fac = fac * i
-    return fac
+def zapolnenie(n):
+    a = [[1]]
+    for i in range(1, n):
+        b = [1]
+        for j in range(0, i-1):
+            b.append(a[i-1][j]+a[i-1][j+1])
+        b.append(1)
+        a.append(b)
+    return a
 
-def C(n,k):
-    return round(fact(n) / (fact(k) * fact(n-k)))
-
-
-def triangle(n):
-    for i in range(n):
-        s = ""
-        for j in range(i+1):
-            s = s + str(C(i,j)) + "\t"
-        print(s)
-
-x=int(input())
-triangle(x)
+def triangle():
+    height = int(input())
+    for i in zapolnenie(height):
+        print(" " * (height * 2), i)
+        height -= 1
+triangle()
