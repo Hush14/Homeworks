@@ -8,11 +8,9 @@ def deri(f):
             a = b.split('x')
             if a[1] == '':
                 d = a[0]
-            elif a[1] == '^2':
-                d = a[0] + 'x'
             else:
                 d = str(int(a[0])*int(a[1][1:])) + 'x^' + str(int(a[1][1:])-1)
-                if a[0][0] != '-':
+                if not (a[0][0] == '-'):
                     d = '+' + d
         return d
 
